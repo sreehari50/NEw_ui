@@ -1,0 +1,19 @@
+extends not
+
+block content
+  h1 Already Approved
+  ul.list-group
+  each abc in result
+    li.list-group-item
+      <h6> land id: 
+      a=abc.land_id
+      <h6> Id: 
+      b=abc.id
+      <h6> Buyer Name: 
+      c=abc.buyer
+      <h6> Seller: 
+      d=abc.seller
+      <h6> Price: 
+      e=abc.price
+      <h6> Time: 
+      f=abc.time

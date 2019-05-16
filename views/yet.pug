@@ -1,0 +1,29 @@
+extends not
+
+block content
+  h1 Yet to Approve
+  form(method='POST', action='/users/yets')
+    #form-group
+      label Land ID:
+      input.form-control(name='lan',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='Approve')
+  ul.list-group
+    each sell, i in sells
+      li.list-group-item
+        h6 Land Id :
+        a=sell.landid
+        h6 Owner name :
+        b=sell.current_owner
+        h6 Cordinate 1 :
+        c=sell.cordinate_1
+        h6 Cordinate 2 :
+        c=sell.cordinate_2
+        h6 Area :
+        c=sell.area
+        h6 price :
+        c=sell.price
+        h6 Mobile Number :
+        b=sell.mob
+        h6 Buyer name :
+        b=sell.buyer_name

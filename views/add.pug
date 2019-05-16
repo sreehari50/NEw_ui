@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1 Add Property
+  form(method='POST', action='/users/addpr')
+    #form-group
+      label Land ID:
+      input.form-control(name='lid', type='number')
+    #form-group
+      label Aadhar Number of owner:
+      input.form-control(name='aadhar', type='number')
+    #form-group
+      label Previous Owner username:
+      input.form-control(name='prev', type='text')  
+    #form-group
+      label Current Owner username:
+      input.form-control(name='curr', type='text')     
+    #form-group
+      label Land address:
+      input.form-control(name='addr',type='text')
+    #form-group
+      label Contact Number:
+      input.form-control(name='mob',type='number')
+    #form-group
+      label Cordinate 1:
+      input.form-control(name='cord1',type='float')
+    #form-group
+      label Cordinate 2:
+      input.form-control(name='cord2',type='float')
+    #form-group
+      label Land area
+      input.form-control(name='area',type='number')
+    #form-group
+      label Tax Paid:
+      input.form-control(name='tax',type='text')     
+    #form-group
+      label Liability:
+      input.form-control(name='liab',type='text') 
+    #form-group
+      label Base price of Land:
+      input.form-control(name='price',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='Add Property')

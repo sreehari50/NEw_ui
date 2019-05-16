@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/articles/adb')
+    #form-group
+      label Buyer Username:
+      input.form-control(name='buyernam', type='text')
+    #form-group
+      label Land ID:
+      input.form-control(name='landidd',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='Add')

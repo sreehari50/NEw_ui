@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1 My properties
+  form(method='POST', action='/articles/sel')
+    #form-group
+      label Land ID:
+      input.form-control(name='land',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='Sel')
+  form(method='POST', action='/articles/cancel')
+    #form-group
+      label Land ID:
+      input.form-control(name='landi',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='Cancel')
+  form(method='POST', action='/articles/change')
+    #form-group
+      label Land ID:
+      input.form-control(name='landz',type='number')
+    #form-group
+      label New Price:
+      input.form-control(name='pric',type='number')
+    br
+    input.btn.btn-primary(type='submit',value='change price')
+    ul.list-group
+    each prop, i in property
+      li.list-group-item
+        h6 Land Id :
+        a=prop.landid
+        h6 Previous owner name :
+        b=prop.previous_owner
+        h6 Cordinate 1 :
+        c=prop.cordinate_1
+        h6 Cordinate 2 :
+        c=prop.cordinate_2
+        h6 Area :
+        c=prop.area
+        h6 price :
+        c=prop.price

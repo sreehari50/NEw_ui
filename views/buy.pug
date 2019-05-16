@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Property that you want to buy
+  form(method='POST', action='/users/buys')
+    #form-group
+      label Land ID:
+      input.form-control(name='idd',type='number')
+    #form-group
+      label Enter your username:
+      input.form-control(name='un',type='string')
+    br
+    input.btn.btn-primary(type='submit',value='Pay')
