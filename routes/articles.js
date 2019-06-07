@@ -11,8 +11,7 @@ let Sell = require('../models/sell');
 let Property = require('../models/property');
 var historian=require('/home/mathul/fabric-dev-servers/land-registry/getHist');
 const {spawn} = require('child_process');
-let Bank =require('../models/bank');var flash = require('connect-flash');
-
+let Bank =require('../models/bank');
 
 // Add Route
 // router.get('/add', ensureAuthenticated, function(req, res){

@@ -3,9 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 var MongoClient = require('mongodb').MongoClient;
-var historian=require('/home/mathul/fabric-dev-servers/land-registry/getHist');
 const {spawn} = require('child_process');
 // Bring in User Model
+const fs = require('fs');
 let User = require('../models/user');
 let Property = require('../models/property');
 let Sell = require('../models/sell');
@@ -195,12 +195,52 @@ router.get('/buy', function(req, res){
   res.render('buy');
 });
 
+//generate certificate
+router.get('/gen', function(req, res){
+  res.render('gen');
+});
+
+router.post('/gens', function(req, res){
+  
+
+MongoClient.connect('mongodb://localhost:27017/nodekb', function(err, db) {
+   
+    db.collection('properties').findOne({ landid:req.body.gid},function(err, user) {
+      if(user===null)
+      {res.end("There is no such land");}
+
+      else if(user.current_owner === req.user.username)
+      {
+        cprocess =  spawn('node',['/home/mathul/fabric-dev-servers/nodekb-master/pdfkit.js',req.body.gid],{stdio: [process.stdin, process.stdout, process.stderr]}
+              )
+              cprocess.on('stdout', function(data) {
+                console.log("Child data: " + data);
+              });
+              cprocess.on('exit', function (code) {
+                console.log('child process exited with code ' + code.toString());
+                console.log("Std:out:"+process.stdout);
+                var tempFile="/home/mathul/Desktop/test/sFri Jun 07 2019 11:49:53 GMT+0530 (IST).pdf";
+                fs.readFile(tempFile, function (err,data){
+   res.contentType("application/pdf");
+   res.send(data);
+});
+
+              });
+      }
+     else{
+  res.send("you dont own this land");
+     }
+    });
+  });
+
+
+});
 router.post('/buys', function(req, res){
   
 MongoClient.connect('mongodb://localhost:27017/nodekb', function(err, db) {
    
     db.collection('sells').findOne({ landid:req.body.idd},function(err, user) {
-      var buyernamerep=user.buyer_name;
+      
       if(user === null)
       {
         res.end("This land is not for sale");
@@ -208,7 +248,7 @@ MongoClient.connect('mongodb://localhost:27017/nodekb', function(err, db) {
      else{
       
 
-     
+      var buyernamerep=user.buyer_name;
       
            if(user.buyer_name!==req.body.un){
             res.send(" there is no property to pay for you");

@@ -11,6 +11,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
+    "connect": "^3.6.6",
     "connect-flash": "^0.1.1",
     "express": "^4.16.4",
     "express-messages": "^1.0.1",
@@ -21,6 +22,8 @@
     "mongoose": "^5.5.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "pdfkit": "^0.9.1",
+    "pdfreader": "^1.0.4",
     "pug": "^2.0.0-rc.1"
   }
 }

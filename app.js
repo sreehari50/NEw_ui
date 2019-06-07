@@ -140,8 +140,13 @@ app.get('/articles/addd', function(req, res){
 //already approved
 app.get('/users/al', async function(req, res){
   result=await historian.landdetails();
-  res.render('al');
-  
+  console.log("length:"+result.length);
+  if(result != "empty")
+{ console.log("empty") 
+  res.render('al');}
+  else{
+    res.send("No Deeds were  approved");
+  }
 });
 
 //yet to approve
